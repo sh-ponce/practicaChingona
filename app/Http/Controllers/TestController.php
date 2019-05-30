@@ -16,7 +16,19 @@ class TestController extends Controller
          $newTest->pass = $request->input('pass');
          $newTest->confirm = $request->input('confirm');
          $newTest->save();
-         return redirect()->route('index');
+         return redirect()->route('index')->with('info','Usuario registrado exitosamente');
          
     }
+    public function show()
+    {
+         $users = Test::all();
+         return view('index',compact('users'));
+    }
+
+    public function getUsers()
+    {
+        return Test::all();
+    }
 }
+
+
