@@ -53,6 +53,7 @@
                                         </td>
                                         <td>
                                             <el-button type="danger" @click="eliminarUsuario(user.id)">Eliminar</el-button>
+                                            <el-button type="warning" @click="editarUsuario(user.id)">Editar</el-button>
 
                                         </td>
                                 </tr>
@@ -120,11 +121,27 @@
                 {
                     location.href="welcome";
                 },
-                eliminarUsuario(id)
+                eliminarUsuario(user_id)
                 {
-
+                    $.get( 'eliminarUsuario/' + user_id
+                    ).done(response => {
+                        if(response){
+                            this.$message({
+                                showClose: true,
+                                message: 'Usuario eliminado.',
+                                type: 'success'
+                            });
+                            this.mostrarUsuarios();
+                        }
+                    });
                 }
             },
+               /* editarUsuario(user_id)
+                {
+                    //location.href("welcome");
+                     $.get('editarUsuario/' + user_id)
+                }*/
+
             delimiters: ['${','}'] //mis delimitadores para mostrar variables vue
         });
     </script>

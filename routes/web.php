@@ -16,3 +16,7 @@ Route::get('getUsers','TestController@getUsers');
 Route::delete('users/{id}', function($id){
     return $id;
 })->name('users.destroy');
+
+Route::get('eliminarUsuario/{id}', 'TestController@eliminarUsuario');
+
+Route::get('editarUsuario/{id}', 'TestController@editarUsuario');

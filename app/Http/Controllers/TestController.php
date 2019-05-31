@@ -29,6 +29,16 @@ class TestController extends Controller
     {
         return Test::all();
     }
+
+    public function eliminarUsuario($id)
+    {
+        $user = Test::find($id);
+
+        if($user->delete())
+            return 'true';
+        
+        return 'false';
+    }
 }
 
 
